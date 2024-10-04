@@ -1,0 +1,25 @@
+spring:
+  kafka:
+    view-logs-topic: 'view-logs'
+    bootstrap-servers: ${SPRING_KAFKA_BOOTSTRAP_SERVERS}
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+
+campaign:
+  data:
+    csv:
+      path: campaigns.csv
+
+logging:
+  level:
+    org.springframework: WARN
+    com.jvo.viewlogkafkaproducer: WARN
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+  file:
+    name: view_logs_producer.log
+  logback:
+    rollingpolicy:
+      max-file-size: 10MB
+      max-history: 10
